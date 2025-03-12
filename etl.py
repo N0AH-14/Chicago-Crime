@@ -12,7 +12,7 @@ def extract_data():
     try:
         logging.info("Data extraction started.")
         # Using chunksize for large datasets.
-        chunks = pd.read_csv(DATA_FILE, chunksize=10000, parse_dates=['Date', 'Updated On'])
+        chunks = pd.read_csv(DATA_FILE, chunksize=1000000, parse_dates=['Date', 'Updated On'])
         for chunk in chunks:
             yield chunk
     except Exception as e:
@@ -25,7 +25,6 @@ def load_data_to_db(df):
     """
     try:
         engine = get_engine()
-        # Ensure the table exists.
         create_tables(engine)
         # Write the DataFrame to the 'crimes' table.
         df.to_sql(name='crimes', con=engine, if_exists='append', index=False, method='multi')
@@ -46,7 +45,6 @@ def run_etl():
             #     break
             # n+=1
             cleaned_chunk = clean_data(chunk)
-            # (Optional) Save cleaned data locally for backup or further analysis.
             # cleaned_chunk.to_csv(os.path.join(PROCESSED_DATA_DIR, 'cleaned_data.csv'), mode='a', index=False)
             load_data_to_db(cleaned_chunk)
         logging.info("ETL process completed successfully.")

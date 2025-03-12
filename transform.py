@@ -7,6 +7,7 @@ def clean_data(df):
     """
     try:
         logging.info("Data cleaning started.")
+
         # Fill missing values in text columns.
         text_columns = ['Case Number', 'Block', 'IUCR', 'Primary Type', 
                         'Description', 'Location Description', 'Beat', 
@@ -36,9 +37,6 @@ def clean_data(df):
         for col in datetime_columns:
             if col in df.columns:
                 df[col] = pd.to_datetime(df[col], errors='coerce')
-        
-        # (Optional) Create a 'location' column for geospatial operations.
-        # In MySQL, you might need to handle POINT types differently.
 
         if 'Location' in df.columns:
             df = df.drop(columns=['Location'])
