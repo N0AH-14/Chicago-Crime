@@ -31,12 +31,13 @@ def main():
         # --- Load Data for ML & Visualization ---
         # For demonstration, try loading processed data if saved;
         # otherwise, load a sample from the raw dataset.
-        processed_file = os.path.join(PROCESSED_DATA_DIR, 'cleaned_data.csv')
-        if os.path.exists(processed_file):
-            df = pd.read_csv(processed_file, parse_dates=['Date', 'Updated On'])
-        else:
-            # Adjust nrows or remove to process full dataset.
-            df = pd.read_csv(DATA_FILE, nrows=100000, parse_dates=['Date', 'Updated On'])
+        # processed_file = os.path.join(PROCESSED_DATA_DIR, 'cleaned_data.csv')
+        # if os.path.exists(processed_file):
+        #     df = pd.read_csv(processed_file, parse_dates=['Date', 'Updated On'])
+        # else:
+        #     # Adjust nrows or remove to process full dataset.
+        #     df = pd.read_csv(DATA_FILE, nrows=100000, parse_dates=['Date', 'Updated On'])
+        df = pd.read_csv(DATA_FILE, parse_dates=['Date', 'Updated On'])
         
         # --- Run Machine Learning Models ---
         model_results = run_all_models(df)
