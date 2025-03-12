@@ -1,0 +1,20 @@
+2025-03-12 15:07:23,018 INFO:Project started.
+2025-03-12 15:07:23,018 INFO:Starting ETL process.
+2025-03-12 15:07:23,018 INFO:Data extraction started.
+2025-03-12 15:07:23,112 INFO:Data cleaning started.
+2025-03-12 15:07:23,129 INFO:Data cleaning completed successfully.
+2025-03-12 15:07:23,165 INFO:Database engine created successfully.
+2025-03-12 15:07:23,229 INFO:Database table 'crimes' created or already exists.
+2025-03-12 15:09:06,588 INFO:Loaded 10000 records to the database.
+2025-03-12 15:09:06,651 INFO:ETL process completed successfully.
+2025-03-12 15:09:07,202 INFO:Starting classification model training.
+2025-03-12 15:09:22,954 INFO:Classification model accuracy: 84.56%
+2025-03-12 15:09:22,959 INFO:Starting clustering model training.
+2025-03-12 15:09:23,144 INFO:Clustering completed with 5 clusters.
+2025-03-12 15:09:23,144 INFO:Starting regression model training.
+2025-03-12 15:09:23,246 INFO:Regression model MSE: 235778617.30
+2025-03-12 15:09:23,246 INFO:All models ran successfully.
+2025-03-12 15:09:23,447 INFO:Summary statistics saved to data/processed\summary_statistics.csv
+2025-03-12 15:09:24,409 INFO:Crime trends plot saved to data/processed\crime_trends.png
+2025-03-12 15:09:25,182 INFO:Clustered data exported to data/processed\clustered_data.csv
+2025-03-12 15:09:25,182 INFO:Project completed successfully.
