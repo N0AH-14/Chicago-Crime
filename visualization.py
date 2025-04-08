@@ -5,9 +5,7 @@ import logging
 from config import PROCESSED_DATA_DIR
 
 def generate_summary_statistics(df):
-    """
-    Generate and save summary statistics from the dataset.
-    """
+    # Generate and save summary statistics from the dataset.
     try:
         summary = df.describe(include='all')
         output_path = os.path.join(PROCESSED_DATA_DIR, 'summary_statistics.csv')
@@ -19,9 +17,7 @@ def generate_summary_statistics(df):
         raise
 
 def plot_crime_trends(df):
-    """
-    Plot and save the trend of crimes per year.
-    """
+    # Plot and save the trend of crimes per year.
     try:
         crime_counts = df.groupby('Year').size()
         plt.figure(figsize=(10, 6))
@@ -39,9 +35,7 @@ def plot_crime_trends(df):
         raise
 
 def export_clustered_data(clustered_df):
-    """
-    Export clustered data to CSV for use in dashboards.
-    """
+    # Export clustered data to CSV for use in dashboards.
     try:
         output_path = os.path.join(PROCESSED_DATA_DIR, 'clustered_data.csv')
         clustered_df.to_csv(output_path, index=False)

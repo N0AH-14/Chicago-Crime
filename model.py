@@ -6,9 +6,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import accuracy_score, mean_squared_error
 
 def run_classification(df):
-    """
-    Classification: Predict whether an arrest was made based on select features.
-    """
+    # Classification: Predict whether an arrest was made based on select features.
     try:
         logging.info("Starting classification model training.")
         features = ['Year', 'X Coordinate', 'Y Coordinate', 'Latitude', 'Longitude']
@@ -31,9 +29,7 @@ def run_classification(df):
         raise
 
 def run_clustering(df, n_clusters=5):
-    """
-    Clustering: Group incidents based on location.
-    """
+    # Clustering: Group incidents based on location.
     try:
         logging.info("Starting clustering model training.")
         if 'Latitude' not in df.columns or 'Longitude' not in df.columns:
@@ -51,9 +47,7 @@ def run_clustering(df, n_clusters=5):
         raise
 
 def run_regression(df):
-    """
-    Regression: Forecast the number of crimes per Year.
-    """
+    # Regression: Forecast the number of crimes per Year.
     try:
         logging.info("Starting regression model training.")
         # Group data by Year.
@@ -80,9 +74,7 @@ def run_regression(df):
         raise
 
 def run_all_models(df):
-    """
-    Run classification, clustering, and regression models.
-    """
+    # Run classification, clustering, and regression models.
     try:
         clf, acc = run_classification(df)
         kmeans, clustered_df = run_clustering(df)

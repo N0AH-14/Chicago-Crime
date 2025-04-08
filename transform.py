@@ -2,9 +2,7 @@ import pandas as pd
 import logging
 
 def clean_data(df):
-    """
-    Perform data cleaning and transformation on the DataFrame.
-    """
+    # Perform data cleaning and transformation on the DataFrame.
     try:
         logging.info("Data cleaning started.")
 

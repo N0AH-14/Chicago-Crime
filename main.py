@@ -7,9 +7,6 @@ from visualization import generate_summary_statistics, plot_crime_trends, export
 from config import LOG_FILE, PROCESSED_DATA_DIR, DATA_FILE
 
 def setup_logging():
-    """
-    Configure logging to file and console.
-    """
     # Create log directory if it doesn't exist.
     os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
     logging.basicConfig(
@@ -24,25 +21,21 @@ def main():
     logging.info("Project started.")
     
     try:
-        # --- ETL Process ---
+        # ETL Process
         logging.info("Starting ETL process.")
         run_etl()
         
-        # --- Load Data for ML & Visualization ---
-        # For demonstration, try loading processed data if saved;
-        # otherwise, load a sample from the raw dataset.
         # processed_file = os.path.join(PROCESSED_DATA_DIR, 'cleaned_data.csv')
         # if os.path.exists(processed_file):
         #     df = pd.read_csv(processed_file, parse_dates=['Date', 'Updated On'])
         # else:
-        #     # Adjust nrows or remove to process full dataset.
-        #     df = pd.read_csv(DATA_FILE, nrows=100000, parse_dates=['Date', 'Updated On'])
+        #     df = pd.read_csv(DATA_FILE, nrows=100000, parse_dates=['Date', 'Updated On']) # Adjust nrows or remove to process full dataset.
         df = pd.read_csv(DATA_FILE, parse_dates=['Date', 'Updated On'])
         
-        # --- Run Machine Learning Models ---
+        # Run Machine Learning Models
         model_results = run_all_models(df)
         
-        # --- Generate Outputs for Dashboard ---
+        # Generate Outputs for Dashboard
         generate_summary_statistics(df)
         plot_crime_trends(df)
         

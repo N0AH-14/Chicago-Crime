@@ -3,9 +3,7 @@ from config import DB_CONFIG
 import logging
 
 def get_engine():
-    """
-    Create and return a SQLAlchemy engine for MySQL.
-    """
+    # Create and return a SQLAlchemy engine for MySQL.
     try:
         # Connection string format for MySQL via pymysql.
         conn_str = f"mysql+pymysql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@" \
@@ -18,9 +16,7 @@ def get_engine():
         raise
 
 def create_tables(engine):
-    """
-    Create the crimes table if it doesn't already exist.
-    """
+    # Create the crimes table if it doesn't already exist.
     create_table_query = """
     CREATE TABLE IF NOT EXISTS crimes (
     `ID` BIGINT PRIMARY KEY,

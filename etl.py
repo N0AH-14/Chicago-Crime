@@ -6,9 +6,7 @@ from transform import clean_data
 from database import get_engine, create_tables
 
 def extract_data():
-    """
-    Extract data from the CSV file in chunks.
-    """
+    # Extract data from the CSV file in chunks.
     try:
         logging.info("Data extraction started.")
         # Using chunksize for large datasets.
@@ -20,9 +18,8 @@ def extract_data():
         raise
 
 def load_data_to_db(df):
-    """
-    Load the transformed DataFrame into the MySQL database.
-    """
+    # Load the transformed DataFrame into the MySQL database.
+    
     try:
         engine = get_engine()
         create_tables(engine)
@@ -34,16 +31,11 @@ def load_data_to_db(df):
         raise
 
 def run_etl():
-    """
-    Run the full ETL pipeline.
-    """
+    # Run the full ETL pipeline.
     try:
         n=0
         for chunk in extract_data():
             # Clean and transform the data.
-            # if n==1:
-            #     break
-            # n+=1
             cleaned_chunk = clean_data(chunk)
             # cleaned_chunk.to_csv(os.path.join(PROCESSED_DATA_DIR, 'cleaned_data.csv'), mode='a', index=False)
             load_data_to_db(cleaned_chunk)
